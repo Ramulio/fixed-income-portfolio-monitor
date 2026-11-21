@@ -1,0 +1,9 @@
+ticker,segment,effective_duration_years,sec_yield_pct,average_ytm_pct,expense_ratio_pct,source_url,as_of,sec_yield_as_of
+AGG,Core US Aggregate,5.69,5.02,5.38,0.03,https://www.ishares.com/us/products/239458/ishares-core-total-us-bondmarket-etf,2026-11-19,2026-11-19
+SHY,1-3Y US Treasury,1.78,4.57,4.75,0.15,https://www.ishares.com/us/products/239452/,2026-11-19,2026-11-19
+IGSB,1-5Y IG corporate,2.63,5.46,5.55,0.04,https://www.ishares.com/us/products/239451/ishares-1-5-year-investment-grade-corporate-bond-etf-igsb,2026-11-19,2026-11-19
+GOVT,Broad US Treasury,5.47,4.9,4.94,,https://www.ishares.com/us/products/239468/ishares-u-s-treasury-bond-etf-govt,2026-11-19,2026-11-19
+LQD,Broad IG corporate,7.58,5.99,6.09,0.14,https://www.ishares.com/us/products/239566/ishares-iboxx-investment-grade-corporate-bond-etf,2026-11-19,2026-11-19
+TIP,US TIPS,6.24,9.03,4.94,,https://www.ishares.com/us/products/239467/ishares-tips-bond-etf-tip,2026-11-19,2026-11-19
+MUB,US municipal,7.25,3.84,4.13,0.05,https://www.ishares.com/us/products/239766/ishares-national-amtfree-muni-bond-etf,2026-11-19,2026-11-18
+IAGG,International aggregate USD hedged (ex US),6.13,3.32,4.95,0.07,https://www.ishares.com/us/products/279626/ishares-international-aggregate-bond-etf,2026-11-19,2026-11-19
