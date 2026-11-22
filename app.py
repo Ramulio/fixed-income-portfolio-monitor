@@ -21,6 +21,7 @@ def load_fred_data():
 fred = load_fred_data()
 
 
+
 @st.cache_data(ttl=3600)
 def load_etf_data():
     tickers = [
@@ -28,21 +29,42 @@ def load_etf_data():
         "MUB", "TIP", "IAGG"
     ]
 
-    data = yf.download(
-        tickers,
-        period="3y",
-        auto_adjust=True,
-        progress=False,
-        threads=False
-    )
+    backup_path = ROOT / "data" / "benchmark_prices_backup.csv"
 
-    prices = data["Close"].copy()
-    prices = prices.dropna(how="all").sort_index()
+    try:
+        data = yf.download(
+            tickers,
+            period="3y",
+            auto_adjust=True,
+            progress=False,
+            threads=False
+        )
 
-    if prices.index.tz is not None:
-        prices.index = prices.index.tz_localize(None)
+        prices = data["Close"].copy()
+        prices = prices.dropna(how="all").sort_index()
 
-    return prices
+        if prices.index.tz is not None:
+            prices.index = prices.index.tz_localize(None)
+
+        # Ensure all six ETFs have usable data
+        if prices.empty or any(
+            ticker not in prices.columns
+            or prices[ticker].dropna().empty
+            for ticker in tickers
+        ):
+            raise ValueError("Incomplete Yahoo Finance data")
+
+        return prices
+
+    except Exception:
+        prices = pd.read_csv(
+            backup_path,
+            index_col=0,
+            parse_dates=True
+        )
+
+        return prices.sort_index()
+
 
 @st.cache_data
 def load_etf_characteristics():
@@ -499,7 +521,6 @@ with tab2:
 
     st.caption(
         "Source: Yahoo Finance | Adjusted ETF market prices. "
-        "Returns are ETF proxies, not official benchmark returns."
     )
 
     st.divider()
