@@ -140,6 +140,8 @@ st.caption(
     "Market data | Benchmark monitoring | Portfolio analytics"
 )
 
+st.caption("Giulio Ramunno | November 2026")
+
 st.divider()
 
 tab1, tab2, tab3 = st.tabs([
